@@ -9,15 +9,17 @@ tasks:
       curl -fsSL https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.2/install.sh | PROFILE=/dev/null bash
       cp /home/gitpod/.nvm/nvm-lazy.sh /workspace/.nvm/nvm-lazy.sh
       sed -i 's/\$HOME/\/workspace/g' /workspace/.nvm/nvm-lazy.sh
-      sed -i 's/\~/\/workspace/g' /home/gitpod/.bashrc.d/50-node
+      echo ". /workspace/.nvm/nvm-lazy.sh"  >> /home/gitpod/.bashrc.d/50-node
       source $NVM_DIR/nvm.sh
       nvm install 14.1.0
       nvm use 14.1.0
       npm install
       npm run build
     command: |
-      mongod &
-      npm run start
+      docker image pull mongo:5.0.13
+      docker image pull mysql:5
+      docker compose up -d goof-mysql goof-mongo
+      npm start
   - name: shell
     command: /bin/bash
     openMode: tab-after

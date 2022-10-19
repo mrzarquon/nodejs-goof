@@ -14,10 +14,10 @@ services:
       - goof-mongo
   goof-mongo:
     container_name: goof-mongo
-    image: mongo
+    image: mongo:5.0.13
     ports:
       - "27017:27017"
-  good-mysql:
+  goof-mysql:
     container_name: goof-mysql
     platform: linux/x86_64
     image: mysql:5
