@@ -23,6 +23,8 @@ cd mongodb-*
 sudo cp bin/* /usr/local/bin/
 sudo mkdir -p /data/db
 sudo chown gitpod:gitpod -R /data/db
+nvm install 14.1.0
+nvm use 14.1.0
 cd /
 rm -rf "${TMPDIR}"
 EOF
