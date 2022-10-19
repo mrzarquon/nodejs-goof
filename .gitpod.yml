@@ -14,11 +14,11 @@ tasks:
       nvm install 14.1.0
       nvm use 14.1.0
       npm install
-      npm run build
     command: |
       docker image pull mongo:5.0.13
       docker image pull mysql:5
       docker compose up -d goof-mysql goof-mongo
+      snyk auth
       npm start
   - name: shell
     command: /bin/bash
@@ -27,3 +27,6 @@ ports:
   - name: Goof Page
     port: 3001
     onOpen: open-preview
+vscode:
+  extensions:
+    - https://github.com/snyk/vscode-extension/releases/download/v1.6.1/snyk-vulnerability-scanner-1.6.1.vsix
