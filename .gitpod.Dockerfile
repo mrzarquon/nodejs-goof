@@ -7,6 +7,8 @@ ENV NVM_DIR /workspace/.nvm
 RUN <<'EOF' bash
 set -ex
 
+rm -rf /home/gitpod/.bashrc.d/50-node
+
 TMPDIR=$(mktemp -d)
 cd "${TMPDIR}" || exit 1
 curl -O -s -L "https://static.snyk.io/cli/latest/snyk-linux"

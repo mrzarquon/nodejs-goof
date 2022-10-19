@@ -4,6 +4,7 @@ image:
 tasks:
   - name: build and prep goof
     init: |
+      export NVM_DIR="/workspace/.nvm"
       mkdir -p $NVM_DIR
       curl -fsSL https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.2/install.sh | PROFILE=/dev/null bash
       cp /home/gitpod/.nvm/nvm-lazy.sh /workspace/.nvm/nvm-lazy.sh
