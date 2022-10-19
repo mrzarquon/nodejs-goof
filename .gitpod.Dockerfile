@@ -1,6 +1,7 @@
 # syntax=docker/dockerfile:1.4
 FROM docker.io/gitpod/workspace-node 
 
+ENV NVM_DIR /workspace/.nvm
 # below is an inline bash script to populate this container with a helper script to run at login
 # this is really a terrible idea and why aws_init.sh is used instead
 RUN <<'EOF' bash
@@ -23,8 +24,6 @@ cd mongodb-*
 sudo cp bin/* /usr/local/bin/
 sudo mkdir -p /data/db
 sudo chown gitpod:gitpod -R /data/db
-nvm install 14.1.0
-nvm use 14.1.0
 cd /
 rm -rf "${TMPDIR}"
 EOF
