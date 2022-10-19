@@ -1,0 +1,18 @@
+image:
+  file: .gitpod.Dockerfile
+
+tasks:
+  - name: build and prep goof
+    init: |
+      npm install
+      npm run build
+    command: |
+      mongod &
+      npm run start
+  - name: shell
+    command: /bin/bash
+    openMode: tab-after
+ports:
+  - name: Goof Page
+    port: 3001
+    onOpen: open-preview
